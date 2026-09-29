@@ -1,0 +1,28 @@
+<%- include("partials/head.ejs") %>
+</head>
+<body>
+    <h1>
+        @<%= newanimal.name %>'s Instagram Profile
+    </h1>
+    <button>Follow</button>
+    <button>Message</button>
+
+    <p>
+        Followers: <%= newanimal.followers %> &nbsp;&nbsp;
+        Following: <%= newanimal.following %>
+    </p>
+
+    <hr>
+
+    <% for(let post of newanimal.posts) { %>  
+        <img src="<%= post.image %>" alt="post image">
+        <p>
+            likes: <%= post.likes %> &nbsp;&nbsp;
+            comments: <%= post.comments %>
+        </p>
+    <% } %>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+  <script src="/btnss.js"></script>
+</html>

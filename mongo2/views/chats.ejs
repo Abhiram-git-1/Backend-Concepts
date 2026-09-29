@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chats</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1 class="title">Chit Chat</h1>
+    <br><br>
+
+    <form action="/chats/new" method="GET">
+    <button type="submit" class="create-chat-btn">Create New Chat</button>
+</form>
+
+<div class="chat-container">
+    <% chats.forEach(chat => { %>
+
+        <div class="chat-bubble">
+            
+            <div class="chat-header">
+                <p class="sender"><%= chat.sender %></p>
+                <p class="receiver">→ <%= chat.receiver %></p>
+            </div>
+
+            <p class="message"><%= chat.message %>
+            <form action="/chats/<%= chat._id %>/edit" method="GET" style="display: inline;">
+                <button type="submit">Edit</button>
+            </form>
+            <form action="/chats/<%= chat._id %>?_method=DELETE" method="POST" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+            </p>
+    
+            <p class="time">
+                <%= new Date(chat.timestamp).toLocaleString() %>
+            </p>
+
+        </div>
+
+    <% }) %>
+
+    
+</div>
+
+</body>
+</html>
